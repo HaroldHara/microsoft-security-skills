@@ -1,0 +1,425 @@
+<p align="center">
+  <img src="assets/banner-v2.svg" alt="Microsoft Security Skills" width="100%">
+</p>
+
+<h1 align="center">Microsoft Security Skills Plugin</h1>
+
+<p align="center">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-50E6FF?style=flat-square&labelColor=0A2540" alt="License: MIT"></a>
+  <img src="https://img.shields.io/badge/skills-88-50E6FF?style=flat-square&labelColor=0A2540" alt="88 skills">
+  <img src="https://img.shields.io/badge/validated-2%20models-50E6FF?style=flat-square&labelColor=0A2540" alt="Validated across 2 models">
+  <img src="https://img.shields.io/badge/grounded%20in-Microsoft%20Learn-50E6FF?style=flat-square&labelColor=0A2540" alt="Grounded in Microsoft Learn">
+  <img src="https://img.shields.io/badge/hosts-Copilot%20%7C%20Claude%20%7C%20Cursor%20%7C%20Codex%20%7C%20Gemini-50E6FF?style=flat-square&labelColor=0A2540" alt="Compatible hosts">
+</p>
+
+<p align="center">
+  <a href="#install-in-60-seconds"><b>Install the plugin</b></a> .
+  <a href="#which-skill-for-my-use-case"><b>Which skill do I use?</b></a> .
+  <a href="#prompts-to-try"><b>Prompts to try</b></a>
+</p>
+
+---
+
+Security work is not just a configuration problem. It is a decision problem: which control
+applies here, what needs to be validated before a policy goes live, which investigation path to
+follow, and what guardrails matter in this environment. The Microsoft Security Skills Plugin
+packages security expertise into curated skills so compatible coding agents can give accurate,
+opinionated Microsoft Security guidance instead of generic security advice.
+
+> **This is a skills package, not a standalone agent.** There is no `microsoft-security-skills`
+> CLI. You install it into an existing AI host (GitHub Copilot, Claude Code, Cursor, Codex CLI,
+> or Gemini CLI) and invoke skills through that host's chat. If you do not already have a
+> working AI host, see [Prerequisites](#prerequisites) below before installing.
+
+- 88 curated Microsoft Security skills
+- Coverage: Security, Identity and Management, Compliance and Privacy, Cloud platform security
+- Compatible with GitHub Copilot, Claude Code, Cursor, Codex CLI, Gemini CLI, and other agentic hosts
+- Public knowledge only, grounded in Microsoft Learn
+- Behaviourally validated: a reproducible harness measures the lift each skill adds over an
+  unaided model, verified across two independent frontier models ([details](#validating-the-skills))
+
+## What this plugin delivers
+
+### Security skills: the brain
+
+This plugin ships **88 curated Microsoft Security skills** that teach an agent how security
+work gets done across the Microsoft portfolio. Each skill provides workflows, decision trees,
+and guardrails grounded in public [Microsoft Learn](https://learn.microsoft.com/security/)
+documentation - no proprietary content.
+
+Skills are grouped by portfolio area:
+
+- **Threat protection and SecOps** with `defender-xdr`, `defender-for-endpoint`,
+  `defender-for-identity`, `defender-for-cloud-hardening`, `defender-for-servers`,
+  `defender-for-storage`, `defender-for-containers`, `defender-for-iot`, `defender-easm`,
+  `defender-tvm`, `sentinel`, `sentinel-detection-engineering`, `unified-secops-platform`,
+  and `threat-modelling`
+- **Identity, access, and governance** with `entra-id`, `entra-id-governance`,
+  `entra-id-protection`, `entra-permissions-management`, `entra-global-secure-access`,
+  `entra-verified-id`, `entra-workload-identity`, `entra-external-id`, `passkeys-fido2`,
+  `conditional-access-mfa`, `azure-pim`, and `windows-hello`
+- **Compliance and data protection** with `purview-dlp-policy`, `purview-advanced-dlp`,
+  `purview-ediscovery`, `purview-audit`, `purview-data-classification`,
+  `purview-data-lifecycle`, `purview-communication-compliance`, `insider-risk-baseline`,
+  `purview-insider-risk-management`, `purview-records-management`, `purview-customer-key`,
+  `compliance-manager`, and `microsoft-priva`
+- **AI and agent security** with `microsoft-agent-365`, `purview-agent-365-security`,
+  `purview-copilot-oversharing`, `m365-oversharing`, `purview-dspm-ai`,
+  `copilot-for-m365-readiness`, `purview-ai-hub`, `defender-for-cloud-ai`,
+  `azure-ai-content-safety`, and `agent-identity-governance`
+- **Endpoint and device management** with `intune-device-mgmt`, `intune-app-protection`,
+  `bitlocker-design`, `paw-design`, `windows-11-security-baseline`, `macos-intune-baseline`,
+  and `defender-for-business`
+- **Cloud and platform security** with `azure-policy`, `azure-key-vault`,
+  `azure-network-security-design`, `azure-firewall`, `azure-app-service-security`,
+  `cloud-app-security-posture`, `api-security-design`, `azure-bastion-jit`,
+  `azure-ddos-protection`, `azure-waf`, `azure-confidential-computing`,
+  `azure-monitor-security`, and `iac-security`
+- **Security operations acceleration** with `security-copilot`, `security-copilot-agents`,
+  `compromise-recovery`, and `azure-site-recovery`
+
+## Why this plugin is different
+
+This is not a prompt pack. It is a packaged Microsoft Security capability layer:
+
+- **Skills** teach the agent when to use each security workflow and what to avoid.
+- **Guardrails** are built into every skill to prevent common implementation mistakes.
+- **Public knowledge only** - every skill cites Microsoft Learn; no proprietary methodology
+  or customer data is included.
+- **Multi-host support** lets you use the same security capability across GitHub Copilot in
+  VS Code, Copilot CLI, Claude Code, Cursor, Codex CLI, Gemini CLI, and other compatible hosts.
+
+## Pairs with the agent toolkit
+
+Skills give the agent **knowledge**. To act on real tenant data (run KQL on Microsoft
+Sentinel, read incidents from Microsoft Defender XDR, query Microsoft Graph for Entra
+sign-ins, search Microsoft Purview Audit), pair this plugin with
+[`microsoft-security-agent-toolkit`](https://github.com/vinayaklatthe/microsoft-security-agent-toolkit) -
+MCP servers, KQL snippets, Logic Apps templates, and end-to-end demos. See
+[`INTEGRATIONS.md`](INTEGRATIONS.md).
+
+## What you get
+
+| Component | What it adds | Scope |
+|---|---|---|
+| **88 Microsoft Security skills** | Expertise, decision trees, workflows, and guardrails across the Microsoft Security portfolio | Security, Identity and Management, Compliance and Privacy, Cloud platform security |
+
+## Install in 60 seconds
+
+### Prerequisites
+
+#### 1. A supported AI host (pick one and verify it works first)
+
+This plugin extends an existing AI host. Confirm your host is installed **and** authenticated
+before you run any install command - a host folder on disk is not the same as a working host.
+
+| Host | Verify it works |
+|---|---|
+| **GitHub Copilot** (VS Code) | Open VS Code, open Copilot Chat, ask any question, confirm a response. |
+| **Claude Code** | `claude --version` **and** confirm you have an active Claude subscription. Licensing is the common trap. |
+| **Codex CLI** | `codex --version` |
+| **Gemini CLI** | `gemini --version` |
+| **Cursor** | Launch Cursor and confirm chat returns a response. |
+
+#### 2. Tooling
+
+- **Git** installed and accessible from the command line
+- **Node.js 18+** on your PATH if you plan to use `npx skills add`
+
+```bash
+git --version
+npx --version
+```
+
+### APM (one install, multiple harnesses)
+
+The Microsoft Security Skills Plugin supports [APM](https://github.com/microsoft/apm). One
+command installs it across GitHub Copilot, Claude Code, Cursor, OpenCode, Codex, and Gemini:
+
+```bash
+apm install vinayaklatthe/microsoft-security-skills
+```
+
+> **APM target detection caveat.** APM reports a target as `active` when it detects host
+> folders such as `.github/`, `.claude/`, or `.codex/` in your workspace. That does **not**
+> mean the host CLI is installed or licensed. Verify your host with the table above before
+> trusting `active` status.
+
+### Universal install (all hosts)
+
+Clone the repository and point your agent at the `skills/` directory:
+
+```bash
+git clone https://github.com/vinayaklatthe/microsoft-security-skills.git
+```
+
+Or use the skills CLI to install globally for a specific host:
+
+```bash
+# GitHub Copilot (VS Code, Copilot CLI)
+npx skills add https://github.com/vinayaklatthe/microsoft-security-skills/tree/main/skills -a github-copilot -g -y
+
+# Claude Code
+npx skills add https://github.com/vinayaklatthe/microsoft-security-skills/tree/main/skills -a claude -g -y
+
+# Cursor
+npx skills add https://github.com/vinayaklatthe/microsoft-security-skills/tree/main/skills -a cursor -g -y
+
+# Codex CLI
+npx skills add https://github.com/vinayaklatthe/microsoft-security-skills/tree/main/skills -a codex -g -y
+```
+
+### Gemini CLI
+
+**Install the extension**:
+
+```bash
+gemini extensions install https://github.com/vinayaklatthe/microsoft-security-skills
+```
+
+## Quick start (GitHub Copilot)
+
+If GitHub Copilot in VS Code is your host, this is the shortest path from zero to working
+skills.
+
+1. **Verify Copilot works.** Open VS Code, open Copilot Chat, ask `What is Microsoft Entra ID?`
+   and confirm you get a response.
+2. **Install APM.** Follow [APM install instructions](https://github.com/microsoft/apm).
+3. **Install the skills.**
+   ```bash
+   apm install vinayaklatthe/microsoft-security-skills --target copilot
+   ```
+   Expected output: `88 skill(s) integrated -> .agents/skills/`
+4. **Confirm the skill files are present** (see [Verify the installation](#verify-the-installation) below).
+5. **Use the skills.** Open Copilot Chat and try one of the [Prompts to try](#prompts-to-try).
+
+## Verify the installation
+
+After install, run one file check and three behavioural checks.
+
+### 0. Confirm skill files installed
+
+```bash
+# macOS / Linux
+ls .agents/skills | wc -l
+```
+
+```powershell
+# Windows PowerShell
+(Get-ChildItem .agents\skills -Directory).Count
+```
+
+Expected: around 88 folders, including `defender-xdr`, `entra-id`, `sentinel`,
+`purview-dlp-policy`, and `m365-oversharing`. If the count is zero or `.agents/skills` is
+missing, the install did not complete - re-run the install command and check the host you
+targeted.
+
+### 1. Verify security skills
+
+Ask:
+
+> What Microsoft Defender controls should I prioritise for a new Microsoft 365 tenant?
+
+You should get structured, product-specific guidance with Microsoft Learn references - not
+generic security advice.
+
+### 2. Verify identity skills
+
+Ask:
+
+> How do I design a Conditional Access policy baseline for a mid-size organisation?
+
+You should get a policy framework with named Conditional Access templates and guardrails.
+
+### 3. Verify compliance skills
+
+Ask:
+
+> What Purview DLP policies should I configure to protect sensitive data in Microsoft 365?
+
+You should get scoped DLP guidance with workload-specific recommendations.
+
+## Prompts to try
+
+Once the plugin is installed, try prompts like these:
+
+- `What are the first Defender XDR controls I should enable for a new tenant?`
+- `Design a Conditional Access baseline for our Entra ID tenant.`
+- `Help me build a Purview DLP policy to protect financial data.`
+- `What Sentinel analytic rules should I enable for identity threat detection?`
+- `How do I configure Entra ID Protection for risky sign-in response?`
+- `Review my Intune device compliance policy for security gaps.`
+- `What Defender for Cloud hardening recommendations apply to my Azure workloads?`
+- `Help me design a PAW (Privileged Access Workstation) deployment.`
+- `What Purview Insider Risk policies should I start with?`
+- `How do I use Security Copilot to accelerate an incident investigation?`
+
+## Which skill for my use case?
+
+Use this table to pick the right skill before asking your question.
+
+| If you want to... | Use this skill |
+|---|---|
+| Investigate a multi-product incident (endpoint + identity + email) | `defender-xdr` |
+| Build or operate a SIEM, ingest logs, write KQL detections | `sentinel` |
+| Merge Sentinel and Defender XDR into one portal for your SOC | `unified-secops-platform` |
+| Use AI to help investigate or summarise incidents | `security-copilot` |
+| Automate repetitive triage with autonomous AI agents | `security-copilot-agents` |
+| Respond to an active breach or ransomware attack | `compromise-recovery` |
+| Set up identity and access management (users, SSO, hybrid) | `entra-id` |
+| Enforce MFA and access controls (Conditional Access) | `conditional-access-mfa` |
+| Detect risky users or leaked credentials | `entra-id-protection` |
+| Remove standing admin rights and implement JIT access | `azure-pim` |
+| Govern identity lifecycle and access packages | `entra-id-governance` |
+| Manage multicloud permissions across AWS, GCP, Azure | `entra-permissions-management` |
+| Protect endpoints with EDR, attack surface reduction | `defender-for-endpoint` |
+| Detect identity-based attacks on Active Directory | `defender-for-identity` |
+| Protect email from phishing and business email compromise | `defender-for-office-365` |
+| Harden cloud infrastructure posture (Secure Score, attack paths) | `defender-for-cloud-hardening` |
+| Harden SaaS app configurations (M365, Salesforce, etc.) | `cloud-app-security-posture` |
+| Manage Intune device compliance and configuration | `intune-device-mgmt` |
+| Prevent data loss across Exchange, SharePoint, Teams, Endpoint | `purview-dlp-policy` |
+| Find and classify sensitive data across your estate | `purview-data-classification` |
+| Investigate legal or HR matters with eDiscovery | `purview-ediscovery` |
+| Monitor what sensitive data flows through AI prompts | `purview-dspm-ai` |
+| Fix oversharing before rolling out Microsoft 365 Copilot | `purview-copilot-oversharing` |
+| Remediate Microsoft 365 oversharing across SharePoint/OneDrive/Teams (data foundation) | `m365-oversharing` |
+| Manage AI agents at scale (observe, govern, secure) with a single control plane | `microsoft-agent-365` |
+| Detect insider data theft or policy violations | `insider-risk-baseline` |
+| Understand which Purview feature to use (orientation) | `purview-general` |
+| Design a Zero Trust security architecture | `security-architecture` |
+| Threat model a system with STRIDE | `threat-modelling` |
+| Secure Azure network design (hub-spoke, NSG, private endpoints) | `azure-network-security-design` |
+| Store and rotate secrets, keys, certificates | `azure-key-vault` |
+| Enforce governance guardrails across Azure subscriptions | `azure-policy` |
+| Protect APIs (OWASP API Top 10, APIM security) | `api-security-design` |
+| Estimate cost of Azure security controls | `azure-pricing` |
+
+> **Overlapping scenarios:** If your scenario spans multiple areas (e.g., a SOC involving both
+> SIEM and XDR), start with the most specific skill and follow its cross-references.
+
+## Portfolio coverage
+
+| Product family | Coverage in this repo | Example skills |
+|---|---|---|
+| Security | Defender, Sentinel, SecOps workflows, threat modelling | `defender-xdr`, `sentinel`, `unified-secops-platform`, `threat-modelling` |
+| Identity and Management | Entra, Conditional Access, governance, endpoint management | `entra-id`, `entra-id-governance`, `conditional-access-mfa`, `intune-device-mgmt` |
+| Compliance and Privacy | Purview and Priva controls for data protection and compliance | `purview-dlp-policy`, `purview-ediscovery`, `purview-audit`, `microsoft-priva` |
+| Cloud and platform security | Azure security architecture and control implementation | `azure-policy`, `azure-key-vault`, `azure-network-security-design`, `azure-firewall` |
+| AI and agent security | Governing and securing AI agents and data foundations for AI | `microsoft-agent-365`, `purview-agent-365-security`, `m365-oversharing`, `purview-copilot-oversharing` |
+| Security operations acceleration | Security Copilot and response-oriented workflows | `security-copilot`, `security-copilot-agents`, `compromise-recovery` |
+
+## How agents use these skills
+
+1. Agents scan skill front matter (`name`, `description`, and `WHEN:` triggers) to identify likely matches.
+2. Agents load the most relevant `SKILL.md` files for detailed guidance.
+3. Agents follow the skill body to produce focused, actionable outputs tied to Microsoft Learn references.
+
+## Repository layout
+
+The key pieces are:
+
+- `skills/` - the Microsoft Security skill definitions, one subfolder per skill
+- `plugin.json` - plugin metadata for agent harnesses
+- `validation/` - zero-dependency validation harness (structure, links, evals)
+- `README.md` - high-level overview and install guide
+
+```
+skills/
+  sentinel/SKILL.md
+  defender-xdr/SKILL.md
+  purview-dlp-policy/SKILL.md
+  ...
+```
+
+## Skill format
+
+Each `SKILL.md` follows a consistent structure:
+
+```markdown
+---
+name: <skill-slug>
+description: "<what it does>. WHEN: <trigger>, <trigger>, <trigger>."
+license: MIT
+metadata:
+  author: Microsoft
+  version: "0.1.0"
+---
+
+<concise, public-knowledge guidance, with Microsoft Learn links>
+```
+
+## Validating the skills
+
+A zero-dependency validation harness (just Node 18+, no `npm install`) verifies the
+skills are well-formed, accurate, and actually drive the intended outcome.
+
+```bash
+npm run check:structure   # frontmatter, WHEN: triggers, required sections
+npm run eval              # desired-outcome coverage (see validation/cases/)
+npm run check:links       # every Microsoft Learn URL resolves (catches link rot)
+npm run validate          # all three
+```
+
+Three layers of checks:
+
+| Check | Answers | Script |
+|---|---|---|
+| Structural | Are skills well-formed and discoverable? | `validation/check-structure.mjs` |
+| Behavioural (coverage) | Does the skill contain the knowledge each desired outcome needs? | `validation/run-evals.mjs` |
+| Link rot | Do all documentation links still resolve? | `validation/check-links.mjs` |
+
+The behavioural eval reads assertion files in `validation/cases/<skill>.json`. Each case
+lists a prompt and the must-mention points a good answer should contain, grounded in the
+skill's Microsoft Learn references. The default `coverage` mode checks those points are
+present in the skill (runs anywhere, free). To score real model answers, generate one
+`<skill>__<index>.txt` per case with the skill loaded, then run:
+
+```bash
+npm run eval:answers          # score answers in validation/answers/with-skill
+npm run eval:answers:report   # same, as a Hit/Miss + Score table
+```
+
+The 10 highest-risk skills ship with hand-authored assertions and a set of `with-skill`
+answers. To prove a skill *changes behaviour*, capture a `baseline` (answers from a clean
+session with no skill loaded) and compare the scores - see
+`validation/answers/README.md`.
+
+```bash
+npm run eval:compare          # baseline vs with-skill, lift summary
+npm run eval:compare:report   # per-case comparison table
+```
+
+Measured on the 10 high-risk skills (20 prompts, 61 assertions), validated across two
+independent frontier models used as graders:
+
+| Model | Baseline (no skill) | With skill | Lift |
+|---|---|---|---|
+| Claude Opus 4.8 | 51/61 (84%) | 61/61 (100%) | +10 |
+| GPT-5.5 | 55/61 (90%) | 61/61 (100%) | +6 |
+
+The skill never regressed either model, and the gains concentrate on the high-consequence
+operational details a generic answer tends to skip. See `validation/answers/README.md`.
+
+
+All three checks run automatically on every pull request and weekly (link-rot sweep) via
+GitHub Actions - see `.github/workflows/validate.yml`.
+
+## Troubleshooting
+
+### The agent is not using security skills
+
+- Make sure the plugin installed successfully in your host.
+- Confirm the `skills/` directory is present and contains `SKILL.md` files.
+- Reload or restart your host so it re-indexes plugins and skill definitions.
+
+### Skills are loading but responses seem generic
+
+- The agent may not have matched a skill trigger. Try phrasing the prompt using product
+  names directly (for example, "Defender XDR", "Purview DLP", "Entra Conditional Access").
+- Check that the skill's `WHEN:` triggers in the `description` front matter cover your
+  scenario. If they do not, open an issue or a pull request.
+
+### A skill is missing for a product or scenario I need
+
+- Check the `skills/` directory first - coverage may already exist under a different na
