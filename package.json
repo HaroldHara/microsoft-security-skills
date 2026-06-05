@@ -1,6 +1,6 @@
 {
   "name": "microsoft-security-skills",
-  "version": "0.1.28",
+  "version": "0.1.29",
   "description": "Curated Microsoft Security skills for AI agents - Defender, Sentinel, Entra, Purview, Intune, Security Copilot",
   "main": "src/index.js",
   "scripts": {
